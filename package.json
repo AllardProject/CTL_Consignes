@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Application du controleur de consignes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllardProject/CTL_Consignes.git"
+  },
+  "keywords": [
+    "i2c",
+    "modbus",
+    "gpio",
+    "raspberry",
+    "express"
+  ],
+  "author": "mettez les nom de l'équipe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AllardProject/CTL_Consignes/issues"
+  },
+  "homepage": "https://github.com/AllardProject/CTL_Consignes#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "johnny-five": "^1.4.0",
+    "modbus-serial": "^7.8.1",
+    "onoff": "^5.0.1",
+    "zfm20update": "^2.0.0"
+  }
+}
