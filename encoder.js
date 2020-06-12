@@ -1,16 +1,16 @@
 var Gpio = require('onoff').Gpio
-   ,button1 = new Gpio(23, 'in', 'both') //blue button
-   ,button2 = new Gpio(18, 'in', 'both') //red button
-   ,a = 0 //a value GPIO 17
-   ,b = 0 //b value GPIO 18
-     ,v = 0 //value to increment/decrement
+   ,button1 = new Gpio(23, 'in', 'both') //Port A qui represente la droite de l'encodeur
+   ,button2 = new Gpio(18, 'in', 'both') //Port B qui represente la gauche de l'encodeur
+   ,a = 0 
+   ,b = 0 
+   ,v = 0 // Valeur qui va etre incrémenté ou décrémenté
 
 function exit() {
   button1.unexport();
   process.exit();
 }
 
-//Watch for hardware interrupt of switch 1
+
 button1.watch(function (err, value) {
   if (err) {
     throw err;
@@ -18,14 +18,14 @@ button1.watch(function (err, value) {
   a = value;
 });
 
-//Watch for hardware interrupt of switch 2
+
 button2.watch(function (err, value) {
   if (err) {
     throw err;
   }
     b = value;
 
-    //only evaluate if a = 1
+   // Permet de savoir si le bouton va a droite ou a gauche  
     if (a == 1 && b == 1) {
       console.log(v++);
     } else if (a==1 && b==0) {
