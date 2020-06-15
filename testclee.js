@@ -8,3 +8,6 @@ button.watch((err, value) => {
         console.log("Erreur clée");
     }
 });
+process.on('SIGINT',_ =>{
+    button.unexport();
+});
