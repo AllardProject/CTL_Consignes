@@ -1,7 +1,9 @@
 const Gpio = require('onoff').Gpio;
-const buttonA = new Gpio(23, 'in', 'falling');
-const buttonB = new Gpio(18, 'in', 'falling');
-const buttonC = new Gpio(24, 'in', 'both');
+//const Encoder = new rotaryEncoder(23, 18, 'in', 'rising', {debounceTimeout: 10});
+const buttonA = new Gpio(23, 'in', 'rising', {debounceTimeout: 10});
+const buttonB = new Gpio(18, 'in', 'rising', {debounceTimeout: 10});
+const buttonC = new Gpio(24, 'in', 'rising', {debounceTimeout: 10});
+
 
 buttonA.watch((err, value) => {
     console.log("Bouton A");
@@ -10,7 +12,6 @@ buttonA.watch((err, value) => {
     }
 });
 
-
 buttonB.watch((err, value) => {
     console.log("Bouton B");
     if (err) {
@@ -18,10 +19,14 @@ buttonB.watch((err, value) => {
     }
 });
 
-
 buttonC.watch((err, value) => {
     console.log("Bouton C");
     if (err) {
         console.log("Erreur Bouton C");
     }
+});
+process.on('SIGINT',_ =>{
+    buttonA.unexport();
+    buttonB.unexport();
+    buttonC.unexport();
 });
